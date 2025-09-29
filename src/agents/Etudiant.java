@@ -128,7 +128,7 @@ public class Etudiant extends Agent {
     }
 
     // Définir l'AID de l'agent environnement
-    AID environnementAID = new AID("Environnement", AID.ISLOCALNAME);
+    AID environnementAID = new AID("EnvironnementAgent", AID.ISLOCALNAME);
 
     // Création du message ACL
     ACLMessage msg = new ACLMessage(ACLMessage.INFORM);

@@ -1,2 +1,5 @@
-Commande à utiliser pour lancer notre projet : 
+Commande à utiliser pour lancer notre projet :
 java -cp ".:/Users/bgdu69/Documents/Hackermann/Systemes Multi-Agents/ProjetJADE - ArtusGuilhem/bin:/Users/bgdu69/Documents/Hackermann/Systemes Multi-Agents/ProjetJADE - ArtusGuilhem/lib/jade.jar" jade.Boot -gui
+
+
+Commande artus : java -cp "lib/jade.jar:bin" jade.Boot -agents "person:agents.PersonAgent"
