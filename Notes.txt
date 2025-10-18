@@ -1,5 +1,10 @@
 Commande à utiliser pour lancer notre projet :
+javac -cp "/Users/bgdu69/Documents/Hackermann/Systemes Multi-Agents/ProjetJADE - ArtusGuilhem/lib/jade.jar" -d bin src/agents/*.java src/bdi/*.java
 java -cp ".:/Users/bgdu69/Documents/Hackermann/Systemes Multi-Agents/ProjetJADE - ArtusGuilhem/bin:/Users/bgdu69/Documents/Hackermann/Systemes Multi-Agents/ProjetJADE - ArtusGuilhem/lib/jade.jar" jade.Boot -gui
 
-
 Commande artus : java -cp "lib/jade.jar:bin" jade.Boot -agents "person:agents.PersonAgent"
+
+Commandes pour utiliser le Launcher (avec agents pré programmés pour gain de temps):
+Guilhem : 
+java -cp "bin:/Users/bgdu69/Documents/Hackermann/Systemes Multi-Agents/ProjetJADE - ArtusGuilhem/lib/jade.jar" launcher.Main
+

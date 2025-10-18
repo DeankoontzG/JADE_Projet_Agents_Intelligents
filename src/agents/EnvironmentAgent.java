@@ -35,12 +35,12 @@ public class EnvironmentAgent extends Agent {
                         reply.setPerformative(ACLMessage.REFUSE);
                         reply.setContent("Message vide");
                     } else {
-                        // exemple de traitement simple
+                        double decrement = 1.0/temps_rest;
                         switch (content.trim().toLowerCase()) {
                             case "sleep" -> {
                                 reply.setPerformative(ACLMessage.INFORM);
                                 reply.setContent(
-                                    "fatigue-5;stress-2;espertanceNote+0;malade=false;tempsRestantQuotient-1;"
+                                    "fatigue-5;stress-2;esperanceNote+0;malade=false;tempsRestantQuotient-"+decrement+";"
                                 );
                             }
                             case "work" -> {
@@ -48,9 +48,9 @@ public class EnvironmentAgent extends Agent {
                                 boolean malade =
                                     new java.util.Random().nextInt(3) == 0; // 1/3
                                 reply.setContent(
-                                    "fatigue+3;stress+3;espertanceNote+4;malade=" +
+                                    "fatigue+3;stress+3;esperanceNote+4;malade=" +
                                         malade +
-                                        ";tempsRestantQuotient-1;"
+                                        ";tempsRestantQuotient-"+decrement+";"
                                 );
                             }
                             case "sport" -> {
@@ -60,7 +60,7 @@ public class EnvironmentAgent extends Agent {
                                 reply.setContent(
                                     "fatigue+2;stress-4;malade=" +
                                         malade +
-                                        ";tempsRestantQuotient-1;"
+                                        ";tempsRestantQuotient-"+decrement+";"
                                 );
                             }
                             case "coffee" -> {
@@ -70,14 +70,14 @@ public class EnvironmentAgent extends Agent {
                                 reply.setContent(
                                     "fatigue-1;stress-1;malade=" +
                                         malade +
-                                        ";tempsRestantQuotient-1;"
+                                        ";tempsRestantQuotient-"+decrement+";"
                                 );
                             }
                             case "eatmom" -> {
                                 // manger chez maman : pas de risque de malade ici
                                 reply.setPerformative(ACLMessage.INFORM);
                                 reply.setContent(
-                                    "fatigue-2;stress-3;energie+5;malade=false;tempsRestantQuotient-1;"
+                                    "fatigue-2;stress-3;energie+5;malade=false;tempsRestantQuotient-"+decrement+";"
                                 );
                             }
                             case "cowork" -> {
@@ -85,9 +85,9 @@ public class EnvironmentAgent extends Agent {
                                 boolean malade =
                                     new java.util.Random().nextInt(3) == 0; // 1/3
                                 reply.setContent(
-                                    "fatigue+1;stress+1;espertanceNote+2;malade=" +
+                                    "fatigue+1;stress+1;esperanceNote+2;malade=" +
                                         malade +
-                                        ";tempsRestantQuotient-1;"
+                                        ";tempsRestantQuotient-"+decrement+";"
                                 );
                             }
                             default -> {

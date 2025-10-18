@@ -1,6 +1,7 @@
 package bdi;
 import java.util.Map;
 import java.util.HashMap;
+import jade.lang.acl.ACLMessage;
 
 public class Croyances {
 
@@ -70,11 +71,70 @@ public class Croyances {
         this.tempsRestantQuotient = tempsRestantQuotient;
     }
 
-    public static void update(){
-        System.out.println("J'update mes croyances");
+    public void updateFromMessage(ACLMessage msg) {
+        System.out.println("Mise à jour des croyances à partir du message : " + msg.getContent());
+
+        String[] updates = msg.getContent().split(";");
+        for (String update : updates) {
+            if (update.isEmpty()) continue;
+
+            String[] parts = update.split("(?=[+=-])");  // Sépare nom et opérateur/valeur
+            if (parts.length != 2) continue;
+
+            String key = parts[0].trim();
+            String operation = parts[1].trim();
+
+            try {
+                switch (key) {
+                    case "fatigue" -> applyIntUpdate("fatigue", operation);
+                    case "stress" -> applyIntUpdate("stress", operation);
+                    case "espertanceNote" -> applyIntUpdate("esperanceNote", operation);
+                    case "energie" -> System.out.println("Energie (non utilisée ici) : " + operation); // ignore
+                    case "malade" -> this.setMalade(Boolean.parseBoolean(operation.replace("=", "")));
+                    case "tempsRestantQuotient" -> applyFloatUpdate("tempsRestantQuotient", operation);
+                    default -> System.out.println("Clé inconnue : " + key);
+                }
+            } catch (Exception e) {
+                System.out.println("Erreur lors du traitement de : " + update);
+                e.printStackTrace();
+            }
+        }
     }
 
+    private void applyIntUpdate(String field, String operation) {
+        int current = switch (field) {
+            case "fatigue" -> getFatigue();
+            case "stress" -> getStress();
+            case "esperanceNote" -> getEsperanceNote();
+            default -> 0;
+        };
 
+        int value = Integer.parseInt(operation.substring(1));
+        char op = operation.charAt(0);
+        switch (op) {
+            case '+' -> value = current + value;
+            case '-' -> value = current - value;
+            case '=' -> value = Integer.parseInt(operation.substring(1));
+        }
 
+        switch (field) {
+            case "fatigue" -> setFatigue(value);
+            case "stress" -> setStress(value);
+            case "esperanceNote" -> setEsperanceNote(value);
+        }
+    }
+
+    private void applyFloatUpdate(String field, String operation) {
+        float current = getTempsRestantQuotient();
+        float value = Float.parseFloat(operation.substring(1));
+        char op = operation.charAt(0);
+        switch (op) {
+            case '+' -> value = current + value;
+            case '-' -> value = current - value;
+            case '=' -> value = Float.parseFloat(operation.substring(1));
+        }
+
+        setTempsRestantQuotient(value);
+    }
     
 }

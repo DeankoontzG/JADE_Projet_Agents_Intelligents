@@ -11,6 +11,11 @@ public class Desir {
         return activationCondition.test(beliefs);
     }
     */
+    public Desir(String name) {
+      this.name = name;
+      this.priority = 0; // ou valeur par défaut
+    }
+    
     public static void updateFromMessage(ACLMessage msg) {
       System.out.println("Je m'uipdate from message");
     }
