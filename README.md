@@ -1,11 +1,4 @@
 # JADE_Projet_Agents_Intelligents
 
-Percevoir (mettre à jour les beliefs)
-
-Générer des désirs (à partir des beliefs)
-
-Filtrer les désirs pour en faire des intentions
-
-Planifier/exécuter les intentions
-
-Reboucler (car le monde change)
+Ce Repository regroupe notre code développé pour le projet BDI Etudiant.
+Voir fichier Notes.txt pour les instructions de lancement.
