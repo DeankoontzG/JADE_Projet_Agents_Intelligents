@@ -1,7 +1,5 @@
 # JADE_Projet_Agents_Intelligents
 
-A méditer ...
-
 Percevoir (mettre à jour les beliefs)
 
 Générer des désirs (à partir des beliefs)
